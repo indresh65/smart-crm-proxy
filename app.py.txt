@@ -1,5 +1,6 @@
 from flask import Flask, Response, stream_with_context, request
 import requests
+import os
 
 app = Flask(__name__)
 
@@ -20,3 +21,8 @@ def proxy(path):
 @app.route('/health')
 def health():
     return "OK", 200
+
+# 🔥 Add this block 👇
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8000))
+    app.run(host="0.0.0.0", port=port)
