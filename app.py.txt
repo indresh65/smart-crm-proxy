@@ -1,0 +1,11 @@
+from flask import Flask, redirect
+
+app = Flask(__name__)
+
+@app.route('/')
+def index():
+    return redirect("https://leadcapture.streamlit.app", code=302)
+
+@app.route('/<path:path>')
+def catch_all(path):
+    return redirect("https://leadcapture.streamlit.app", code=302)
